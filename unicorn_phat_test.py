@@ -18,19 +18,19 @@ lights = []
 
 class Light():
 	def __init__(self):
-		self.x = randint(0, 3)
-		self.y = randint(0, 7)
+		self.x = randint(0, 7)
+		self.y = randint(0, 3)
 		self.starttime = datetime.datetime.now()
 
 def manage_lights():
 	for light in lights:
 		time_passed = datetime.datetime.now() - light.starttime
 		if time_passed > datetime.timedelta(seconds=5):
-			grid[light.x][light.y] = 0
+			grid[light.y][light.x] = 0
 			lights.remove(light)
 		else:
-			print(str(light.x) + " " + str(light.y))
-			grid[light.x][light.y] = 1		
+			print(str(light.y) + " " + str(light.x))
+			grid[light.y][light.x] = 1		
 
 def draw():
 	for row in grid:
