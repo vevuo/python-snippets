@@ -21,13 +21,11 @@ site = {
 	],
 }
 
-tested_urls = 0
-successful = 0
-failed = 0
+tested_urls, successful, failed = 0, 0, 0
 
 def doesURLwork(url):
 	try:
-		response = urllib.request.urlopen(u)
+		response = urllib.request.urlopen(url)
 		if response.code == 200:
 			return True
 		else:
@@ -49,4 +47,4 @@ for name, urls in site.items():
 			failed += 1
 		tested_urls += 1
 
-print('URLs tested: ' + str(tested_urls) + ' | Successful: ' + str(successful) + ' | Failed: ' + str(failed))
+print('\nURLs tested: ' + str(tested_urls) + ' | Successful: ' + str(successful) + ' | Failed: ' + str(failed))
