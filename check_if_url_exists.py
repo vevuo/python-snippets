@@ -1,3 +1,7 @@
+"""
+Checking if the response from a specified URL is something else
+than response.code == 200
+"""
 import urllib.request
 from colorama import init, Fore
 
