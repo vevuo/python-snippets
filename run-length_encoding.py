@@ -18,11 +18,12 @@ def encode(input_string):
     while len(input_string) >= 1:
         if not sequence:
             sequence.append(input_string.pop(0))
-        elif sequence[-1] is input_string[0]:
+        elif sequence[0] is input_string[0]:
             sequence.append(input_string.pop(0))
         else:
             output.append(str(len(sequence)) + sequence[0])
             sequence.clear()
+    # Add the last sequence to the output.
     output.append(str(len(sequence)) + sequence[0])
 
     return ''.join(output)
