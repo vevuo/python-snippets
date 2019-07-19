@@ -12,8 +12,13 @@ characters. You can assume the string to be decoded is valid."
 
 def encode(input_string):
     input_string = [char for char in input_string]
-    sequence = []
+
     output = []
+
+    """
+    ALTERNATIVE 1
+
+    sequence = []
 
     while len(input_string) >= 1:
         if not sequence:
@@ -27,25 +32,25 @@ def encode(input_string):
     output.append(str(len(sequence)) + sequence[0])
 
     return ''.join(output)
-
     """
-    ALTERNATIVE 2
+    
+    #ALTERNATIVE 2
 
     current_char_count = 1 # How many times current character appears in a row.
-    input_string_len = len(input_string) - 1 # The length of the input string.
 
     for index, char in enumerate(input_string, 0):
-        if index is not input_string_len: # Avoid "IndexError" if last char of the string
+        try:
             if char is input_string[index + 1]:
                 current_char_count += 1
             else:
                 output.append(str(current_char_count) + char)
                 current_char_count = 1
-        else:
+        except IndexError:
             output.append(str(current_char_count) + char)
+            continue         
 
     return ''.join(output)
-    """
+
 
 def decode(input_string):
     output = []
